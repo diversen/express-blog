@@ -6,7 +6,10 @@ const conf = require('config');
 
 var db;
 
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.set('view engine', 'ejs')
 
 MongoClient.connect(conf.mongoUrl, (err, database) => {
 	if (err) return console.log(err)
@@ -24,10 +27,10 @@ app.post('/quotes', (req, res) => {
 	})
 })
 
-app.get('/es6', (req, res) => {
-	res.send('hello world ES6')
-})
-
 app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/index.html')
+	db.collection('quotes').find().toArray((err, result) => {
+		if (err) return console.log(err)
+		// renders index.ejs
+		res.render('index.ejs', {quotes: result})
+	})
 })
