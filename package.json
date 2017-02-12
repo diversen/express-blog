@@ -1,0 +1,22 @@
+{
+  "name": "express-blog",
+  "version": "1.0.0",
+  "description": "Test blog with express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "dennis iversen",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "config": "^1.25.1",
+    "express": "^4.14.1",
+    "express.js": "^1.0.0",
+    "mongodb": "^2.2.22"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
